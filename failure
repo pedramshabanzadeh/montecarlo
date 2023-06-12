@@ -1,0 +1,226 @@
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+import seaborn
+from sympy.solvers import solve
+from sympy import Symbol
+
+n=10000
+e=0
+f=0
+li=[]
+lm=[]
+
+for i in range(0,n):
+    h2= np.random.normal(1.3, 0.1)
+    a= np.random.normal(1,0.1)
+    v= np.random.normal(2.5, 0.7)
+    b= np.random.normal(0.7, 0.1)
+    c= np.random.normal(1.62,0.15)
+
+    q=v*a
+    
+    h1=(q/(b*c))
+    if h1<0:
+        continue
+    h1=(q/(b*c))**(2/3)
+    
+    m=h2/h1
+    #print(h1,h2,m,x)
+    e=e+1
+    li.append(e)
+    if m >= 0.75:
+        f=f+1
+    lm.append(f/e)
+
+
+print(f/e)
+print(np.mean(lm))
+print(np.var(lm))
+
+plt.plot(li,lm)
+plt.title("monte carlo sim")
+plt.xlabel("n")
+plt.ylabel("fail probablity")
+
+plt.show()
+
+n=10000
+e=0
+f=0
+li=[]
+lm=[]
+
+v=1.01
+for i in range(0,n):
+    h2= np.random.normal(1.3, math.sqrt(v))
+    a= np.random.normal(1,0.1)
+    v= np.random.normal(2.5, 0.7)
+    b= np.random.normal(0.7, 0.1)
+    c= np.random.normal(1.62,0.15)
+
+    q=v*a
+    
+    h1=(q/(b*c))
+    if h1<0:
+        continue
+    h1=(q/(b*c))**(2/3)
+    
+    m=h2/h1
+    #print(h1,h2,m,x)
+    e=e+1
+    li.append(e)
+    if m >= 0.75:
+        f=f+1
+    lm.append(f/e)
+
+
+print("h2=",f/e)
+
+n=10000
+e=0
+f=0
+li=[]
+lm=[]
+
+for i in range(0,n):
+    h2= np.random.normal(1.3, 0.1)
+    a= np.random.normal(1,math.sqrt(1.01))
+    v= np.random.normal(2.5, 0.7)
+    b= np.random.normal(0.7, 0.1)
+    c= np.random.normal(1.62,0.15)
+
+    q=v*a
+    
+    h1=(q/(b*c))
+    if h1<0:
+        continue
+    h1=(q/(b*c))**(2/3)
+    
+    m=h2/h1
+    #print(h1,h2,m,x)
+    e=e+1
+    li.append(e)
+    if m >= 0.75:
+        f=f+1
+    lm.append(f/e)
+
+
+print("a=",f/e)
+
+n=10000
+e=0
+f=0
+li=[]
+lm=[]
+
+for i in range(0,n):
+    h2= np.random.normal(1.3, 0.1)
+    a= np.random.normal(1,0.1)
+    v= np.random.normal(2.5, math.sqrt(1.49))
+    b= np.random.normal(0.7, 0.1)
+    c= np.random.normal(1.62,0.15)
+
+    q=v*a
+    
+    h1=(q/(b*c))
+    if h1<0:
+        continue
+    h1=(q/(b*c))**(2/3)
+    
+    m=h2/h1
+    #print(h1,h2,m,x)
+    e=e+1
+    li.append(e)
+    if m >= 0.75:
+        f=f+1
+    lm.append(f/e)
+
+
+print("v=",f/e)
+
+n=10000
+e=0
+f=0
+li=[]
+lm=[]
+
+for i in range(0,n):
+    h2= np.random.normal(1.3, 0.1)
+    a= np.random.normal(1,0.1)
+    v= np.random.normal(2.5, 0.7)
+    b= np.random.normal(0.7, math.sqrt(1.01))
+    c= np.random.normal(1.62,0.15)
+
+    q=v*a
+    
+    h1=(q/(b*c))
+    if h1<0:
+        continue
+    h1=(q/(b*c))**(2/3)
+    
+    m=h2/h1
+    #print(h1,h2,m,x)
+    e=e+1
+    li.append(e)
+    if m >= 0.75:
+        f=f+1
+    lm.append(f/e)
+
+
+print("b=",f/e)
+
+n=10000
+e=0
+f=0
+li=[]
+lm=[]
+
+for i in range(0,n):
+    h2= np.random.normal(1.3, 0.1)
+    a= np.random.normal(1,0.1)
+    v= np.random.normal(2.5, 0.7)
+    b= np.random.normal(0.7, 0.1)
+    c= np.random.normal(1.62,math.sqrt(1.225))
+
+    q=v*a
+    
+    h1=(q/(b*c))
+    if h1<0:
+        continue
+    h1=(q/(b*c))**(2/3)
+    
+    m=h2/h1
+    #print(h1,h2,m,x)
+    e=e+1
+    li.append(e)
+    if m >= 0.75:
+        f=f+1
+    lm.append(f/e)
+
+
+print("c=",f/e)
+
+
+n=10000
+f=0
+l=[]
+
+for i in range(0,n):
+    x1= np.random.normal(800, 5)
+    x2= np.random.normal(600,3)
+    x3= np.random.normal(55, 0.1)
+    x4= np.random.normal(38.4, 0.1)
+
+    r=1.6*x1+1.4*x2
+    s=x3*x4
+
+    #print(r,s)
+    l.append(r-s)
+    if s>r:
+        f=f+1
+
+print(f/n)
+print(np.mean(l))
+print(np.var(l))
+
